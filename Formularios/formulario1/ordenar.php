@@ -6,7 +6,7 @@
     $arr = array();
 
     while ($j <= $i) {
-        $arr[$j = $_SESSION['num'.$j];
+        $arr[$j] = $_SESSION['num'.$j];
         $j;
     }
 
@@ -30,14 +30,15 @@
         $j = 0;
         $longi--;
         $maximo = 0;
-
+    }
+    
     echo "<br> El array ordenado es el siguiente: <br>";
     $longi = count($arr) - 1;
     $i = 0;
     while ($i <= $longi) {
-        echo $arr[$i] . ("<br>")J;
+        echo $arr[$i] . ("<br>");
         $i++;
     }
 
-}
+
 ?>
