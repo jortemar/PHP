@@ -1,6 +1,5 @@
 <?php
     class Persona{
-
         private $dni;
         private $nombre;
         private $apellido;
@@ -16,39 +15,30 @@
         public function getDni() {
             return $this->dni;
         }
-
         public function setDni($dni) {
             $this->dni = $dni;
         }
-
         public function getNombre() {
             return $this->nombre;
         }
-
         public function setNombre($dni) {
             $this->dni = $dni;
         }
-
         public function getApellido() {
             return $this->apellido;
         }
-
         public function setApellido($apellido) {
             $this->apellido = $apellido;
         }
-
         public function getCp() {
             return $this->cp;
         }
-
         public function setCp($cp) {
             $this->cp = $cp;
         }
-
-        public function toString() {
-            return "Persona : ".$this->dni." ".$this->nombre." ".$this->apellido." ".$this->cp;
+        public function __toString() {
+            return "Persona: ". $this->dni. " ". $this->nombre. " ". $this->apellido. " ". $this->cp;
         }
-
     }
 
     $persona1 = new Persona(71717, "Pepe", "Jimenez", 39100);
@@ -60,11 +50,11 @@
     
     $maximo = 0;
     $indice = 0;
-    $tamano = count($array_personas) -1;
-    $long_array = $tamano;
-
-    while($indice <= $tamano) {
-        while($indice <= $tamano) {
+    $longitud = count($array_personas) - 1;
+    $auxLongitud = $longitud;
+    
+    while($indice <= $longitud) {
+        while($indice <= $longitud) {
             if ($array_personas[$indice]->getCp() >= $maximo) {
                 $maximo = $array_personas[$indice]->getCp();
                 $posicion = $indice;
@@ -72,17 +62,17 @@
             $indice++;
         }
 
+        $aux = $array_personas[$longitud];
+        $array_personas[$longitud] = $array_personas[$posicion];
+        $array_personas[$posicion] = $aux;
         $maximo = 0;
         $indice = 0;
-        $aux = $array_personas[$posicion];
-        $array_personas[$posicion] = $array_personas[$tamano];
-        $array_personas[$tamano] = $aux;
-        $tamano--;
+        $longitud--;
     }
 
     $indice = 0;
-    while ($indice <= $long_array) {
-        echo $array_personas[$indice];
+    while ($indice <= $auxLongitud) {
+        echo $array_personas[$indice]. "<br>";
         $indice++;
     }
 

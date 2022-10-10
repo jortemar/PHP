@@ -1,36 +1,19 @@
 <?php
-    
-    class Persona{
-        private $DNI;
-        private $nombre;
-        private $apellido;
+  $arr1= array(10=>"3000",20=>"4000",30=>"6000");
+  $arr2=  array(10=>"8000",15=>"6000",20=>"4000");
 
-        function __construct($DNI, $nombre, $apellido) {
-            $this->DNI = $DNI;
-            $this->nombre = $nombre;
-            $this->apellido = $apellido;
-        }
+  print_r($arr1);
+  echo "<br>";
+  print_r($arr2);
+  echo "<br>";
 
-        public function getNombre() {
-            return $this->nombre;
-        }
-        public function setNombre($nombre) {
-            $this->nombre = $nombre;
-        }
-        public function getApellido() {
-            return $this->apellido;
-        }
-        public function setApellido($apellido) {
-            $this->apellido = $apellido;
-        }
-        public function __toString() {
-            return "Persona: ". $this->nombre. " ". $this->apellido;
-        }
-    }
+  $arr3 = $arr1+$arr2;
+  print_r($arr3);
+  echo "<br>";
 
-    $per = new Persona("77718854Z","Jose","Ortega");
-    echo $per. "<br>";
-    $per->setApellido("Montes");
-    echo $per. "<br>";
-    
+
+  $arr4 = $arr2+$arr1;
+  print_r($arr4);
+  echo "<br>";
+   
 ?>    
