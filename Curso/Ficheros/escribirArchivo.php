@@ -13,7 +13,7 @@
         fwrite($miArchivo, "Escribiendo dentro del fichero");
         fflush($miArchivo); //revisa el búffer por si queda algún residuo que volcar
 
-        echo filesize("archivo3.txt");
+        echo "El peso del archivo es de ". filesize("archivo3.txt"). " bites <br>";
 
         $arrayinfo = stat("archivo3.txt");
         var_dump($arrayinfo);
