@@ -1,15 +1,14 @@
 <?php
-
     class Palabra {
 
         private $nombre;
-        private $numRepet;
-        private $lineaUbicacion;
+        private $numRep;
+        private $linea;
 
-        function __construct($nombre, $numRepet, $lineaUbicacion) {
+        function __construct($nombre, $linea) {
             $this->nombre = $nombre;
-            $this->numRepet = $numRepet;
-            $this->lineaUbicacion = $lineaUbicacion;
+            $this->numRep = 1;
+            $this->linea = $linea;
         }
 
         public function getNombre() {
@@ -19,53 +18,65 @@
             $this->nombre = $nombre;
         }
 
-        public function getNumRepet() {
-            return $this->numRepet;
+        public function getNumRep() {
+            return $this->numRep;
         }
-        public function setNumRepet($numRepet) {
-            $this->numRepet = $numRepet;
+        public function setNumRep($numRep) {
+            $this->numRep = $numRep;
+        }
+        public function sumarRep() {
+            $this->numRep++;
         }
 
-        public function getLineaUbicacion() {
-            return $this->lineaUbicacion;
+        public function getLinea() {
+            return $this->linea;
         }
-        public function setLineaUbicacion($lineaUbicacion) {
-            $this->lineaUbicacion = $lineaUbicacion;
+        public function setLinea($linea) {
+            $this->linea = $linea;
         }
 
         public function __toString() {
-            return "Palabra: ". $this->nombre. ", repetida ". $this->apellido. " veces, y está en la línea ". $this->lineaUbicacion;
+            return "Palabra: ". $this->nombre. ", repetida ". $this->numRep. " veces, y está en la línea ". $this->linea;
         }
     }    
 
-    require_once("Ejercicio01.php");
-     
-    $subidaFichero = move_uploaded_file($_FILES["fichero"]["tmp_name"], "Carpeta_Ficheros/". "array_personas.txt");
+   
+    $rutaArchivo = "./Carpeta_Ficheros/.". ($_FILES["fichero"]["name"]);
+    $subidaFichero = move_uploaded_file($_FILES["fichero"]["tmp_name"], $rutaArchivo);
 
     if ($subidaFichero) {
-        $gestor = @fopen("Carpeta_Ficheros/array_personas.txt","r");
+        $fichero = @fopen($rutaArchivo,"r");
 
-        $contadorLineas = 1;
+        var_dump($_FILES);
 
-        while ($buffer=fgets($gestor) !== false) {
+        $contLinea = 1;
+        $palabras = [];
+        $filaPalabras = [];
 
-            $filaPalabras = explode(",",$buffer);
+        while ($buffer = fgets($fichero) !== false) {
+            $arrayLineas = explode("\n",$buffer); //separa en líneas
+            foreach($arrayLineas as $linea )
+                $filaPalabras = explode(",", $linea);  //separa en palabras
             
-
-            foreach ($filaPalabras as $valor) {    
-                          
-                foreach ($array_pal as $indice => $contenido) {
-                    if ($valor !== $array_pal[$indice]->nombre) {
-                     
-                        $array_pal = new Palabra($valor, 0, $contadorLineas);
-                    }
-                                    
+                foreach ($filaPalabras as $pal) {
+                    if (in_array($pal, $palabras)) { //comprueba si la palabra ya existe
+                        foreach($arrayPal as $objeto) {
+                            if ($pal === $objeto->getNombre()) {  //si existe, busca el objeto que tenga ese nombre y le añade una repetición
+                                $objeto->sumarRep();
+                                break;
+                            }
+                        }
+                    } else    
+                        $arrayPal[] = new Palabra($pal, $contLinea);  //si no existe, crea una nueva palabra y la añade al array de palabras repetidas
+                        $palabras[] = $pal;                 
                 }
-            }
-            $contadorLineas++;    
+                $contLinea++;
+                    
         }         
     }
+    
+    //fclose($fichero);
 
-    foreach($arra_palabras as $palabra) {
-        echo $palabra;
+    foreach($arrayPal as $pal) {
+        echo $pal;
     } 
