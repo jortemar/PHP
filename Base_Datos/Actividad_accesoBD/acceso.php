@@ -1,9 +1,13 @@
 <?php
-    //escribe un fichero que reciba el código de un usuario y muestre por pantalla todos sus datos
-    $cadena_conexion = 'mysql:dbname=empresa;host=127.0.0.1';
-    $usuario = 'root';
-    $clave = '';
-    try {
+    //apartado 1
+    function conectarBaseDatos($ubicacion, $usuario, $password, $tabla) {
+        //la función mysqli_connect directamente nos captura el error si lo hubiera
+        if($db = mysqli_connect($ubicacion, $usuario, $password, $tabla)) {
+            return $db;
+        }
+    }
+
+    /*try {
         $bd = new PDO($cadena_conexion, $usuario, $clave);
         echo "Conexión realizada con éxito";
         echo "<br>";
@@ -18,5 +22,4 @@
 
     } catch (PDOException $e) {
             echo 'Error con la base de datos: '. $e->getMessage();
-    }    
-    
+    }    */
