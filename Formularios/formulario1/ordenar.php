@@ -18,7 +18,7 @@
     $j = 0;
 
     while ($j < $longi) {
-        while ($j <= longi) {
+        while ($j <= $longi) {
             if ($arr[$j] > $maximo) {
                 $maximo = $arr[$j];
                 $posicion = $j;

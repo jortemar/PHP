@@ -1,0 +1,29 @@
+
+<!-- El método POST se utiliza para enviar los datos
+de un formulario al servidor. Los datos se envían
+al pulsar el botón (submit). El servidor procesa los
+datos y genera la respuesta -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <!-- el atributo action especifica la ruta del script
+    al que se enviará el formulario para que lo procese
+    El atributo method especifa el método HTPP que se usará
+    para la petición. Lo habitual en formularios es POST, pero
+    también puede utilizarse GET. Si se utiliza POST, los
+    parámetros no aparecen en la URL -->
+    <form action = "12.POST(2).php" method = "POST">
+        <input name = "usuario" type = "text">
+        <input name = "clave" type = "password">
+        <input type = "submit">
+    </form>
+</body>
+</html>
+

@@ -5,9 +5,9 @@ del numero por si mismo y la raiz cuadrada del numero */
 
 <?php
     session_start();
-    $i=$-SESSION['indice'];
+    $i = $_SESSION['indice'];
 
-    if(!empty($_POST['num'])) {
+    if (!empty($_POST['num'])) {
         $_SESSION['num'.$i] = $_POST['num'];
         $i++;
         $_SESSION['indice'] =$i;

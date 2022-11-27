@@ -4,8 +4,8 @@
     $resultado = 1;
 
     do {
-        $resultado = $resultado * $numero;
-        $numero = $numero-1;
+        $resultado = $resultado * $numero; // $resultado *= $numero;
+        $numero--;
     } while ($numero > 1);
     
 
