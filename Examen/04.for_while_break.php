@@ -30,7 +30,7 @@
         for ($j = 0; $j < 3; $j++) {
             echo "i: $i j: $j <br>";
             if ($j == 1) {
-                break; //es lo mismo que poner break 1
+                break; //es lo mismo que poner break 1. Rompe el primer ciclo for (de dentro a fuera)
             }
         }
     }
@@ -42,7 +42,7 @@
         for ($j = 0; $j < 3; $j++) {
             echo "i: $i j: $j <br>";
             if ($j == 1) {
-                break 2;
+                break 2; //rompe los dos ciclos for
             }
         }
     }

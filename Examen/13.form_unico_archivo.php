@@ -31,8 +31,8 @@ ejecutar el método POST -->
     <!-- el atributo action utiliza esta expresión para hacer una autollamada
     al fichero que estamos ejecutando -->
     <form method = "POST"
-        action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >  
-        <label for = "usuario"> Usuario </label>
+        action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >  <!-- el formulario se llamará a sí mismo al pulsar el botón -->
+        <label for = "usuario"> Usuario </label> <!-- el atributo 'for' enlaza la etiqueta con el 'id' del input -->
         <input value = "<?php if(isset($usuario)) echo $usuario; ?>"
         id = "usuario" name = "usuario" type = "text">
         <label for = "clave"> Clave </label>

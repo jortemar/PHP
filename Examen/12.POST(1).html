@@ -20,9 +20,11 @@ datos y genera la respuesta -->
     también puede utilizarse GET. Si se utiliza POST, los
     parámetros no aparecen en la URL -->
     <form action = "12.POST(2).php" method = "POST">
-        <input name = "usuario" type = "text">
-        <input name = "clave" type = "password">
-        <input type = "submit">
+        <label for="usuario"> Usuario </label>
+        <input id = "usuario" name = "usuario" type = "text"> <br><br>
+        <label for="password"> Password </label>
+        <input name = "clave" type = "password"> <br><br>      
+        <input type = "submit" value="Enviar"> <!-- botón (envía datos al servidor) -->
     </form>
 </body>
 </html>

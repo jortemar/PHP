@@ -16,4 +16,4 @@ echo "<a href='16.sesiones(2).php'>Siguiente</a>";
 
 // DOS FORMAS DE ELIMINAR LA SESIÓN (inicializamos a 0 el contador)
 // session_destroy();
-// setcookie(session_name(), 123, time() - 5);
+setcookie(session_name(), 123, time() - 3600);

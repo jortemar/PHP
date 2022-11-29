@@ -16,7 +16,8 @@ y en la segunda las claves son: name, size, type, tmp_name, y error */
     echo "Nombre temporal del fichero en el servidor: ". $_FILES["fichero"]["tmp_name"]. '<br>';
 
     /* el archivo se borra del servidor unos minutos después de haberlo subido.
-    Podemos guardarlo (en este caso en la carpeta 'subidos') utilizando move_uploaded_file */
+    Podemos guardarlo (en este caso en la carpeta 'subidos') utilizando move_uploaded_file
+    Sus parámetros son origen y destino */
     $exito = move_uploaded_file($_FILES["fichero"]["tmp_name"], "subidos/".$_FILES["fichero"]["name"]);
     echo '<br>';
     

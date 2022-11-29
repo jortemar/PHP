@@ -70,11 +70,10 @@
                         $arrayPal[] = new Palabra($pal, $contLinea);  //si no existe, crea una nueva palabra y la añade al array de palabras repetidas
                         $palabras[] = $pal;                 
                 }
-                $contLinea++;
-                    
+                $contLinea++;             
         }         
     }
-    
+
     //fclose($fichero);
 
     foreach($arrayPal as $pal) {

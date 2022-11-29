@@ -1,11 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['usuario'])) {
-    header("Location: 16.sesiones_login.php?redirigido=true");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +7,11 @@ if (!isset($_SESSION['usuario'])) {
     <title>Document</title>
 </head>
 <body>
-    <?php echo "Bienvenido ". $_SESSION['usuario']; ?>
-    <br>
-    <a href = "16.sesiones_logout.php"> Salir <a>
+    <form action="ejercicio1.php" method="POST" enctype = "multipart/form-data">
+
+        <input type = "file" name = "fichero" >
+        <input type = "submit" value = "Subir fichero" >
+
+    </form>
 </body>
 </html>

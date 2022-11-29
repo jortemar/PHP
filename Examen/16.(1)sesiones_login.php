@@ -12,6 +12,7 @@ function comprobarUsuario($nombre, $clave) {
         return FALSE;
 }
 
+// se inicia cuando se aprieta el botón
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usu = comprobarUsuario($_POST['usuario'], $_POST['clave']);
     if ($usu == FALSE) {
@@ -20,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         session_start();
         $_SESSION['usuario'] = $_POST['usuario'];
-        header("Location: 16.sesiones_principal.php");
+        header("Location: 16.(2)sesiones_principal.php");
     }
 }
 ?>
