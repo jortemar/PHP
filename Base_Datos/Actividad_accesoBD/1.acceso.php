@@ -2,9 +2,21 @@
     //apartado 1
     function conectarBaseDatos($ubicacion, $usuario, $password, $tabla) {
         
-        if($db = mysqli_connect($ubicacion, $usuario, $password, $tabla)) {
+        try {
+            $db = mysqli_connect($ubicacion, $usuario, $password, $tabla); 
             return $db;
+        } catch (Exception $e) {
+            print $e;
         }
+
+        /*
+        if ($db != FALSE) {
+            header("3.formulario.php");
+        } else {
+            echo "No se ha podido conectar a la base de datos";
+        }
+        */
+        
     }
 
     //CONEXIÓN ALTERNATIVA    

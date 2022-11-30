@@ -1,5 +1,7 @@
 <?php
-    require_once("./Funciones/funciones.php");
+    session_start();
+    require_once("funciones.php");
+    
     $usuario = $_POST['usuario'];
     $clave = $_POST['clave'];
     $base_datos = "empresa";

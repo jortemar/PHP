@@ -1,7 +1,7 @@
 <?php
     //apartado 3
     require_once('1.acceso.php');
-    $db = conectarBaseDatos("localhost", "empre", "1234", "empresa");
+    $db = conectarBaseDatos("localhost", "empre", "", "empresa");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = (isset($_POST['nombreTabla']))?$_POST['nombreTabla']:"";

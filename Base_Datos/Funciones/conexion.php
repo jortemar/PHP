@@ -10,12 +10,7 @@
         $ins = 'SELECT cod....       ';
         $usuarios = $bd->query($ins);
 
-        
-            
-
-        }
-
     } catch (PDOException $e) {
-            echo 'Error con la base de datos: '. $e->getMessage();
-    }    
+        echo 'Error con la base de datos: '. $e->getMessage();
+    }
 ?>    
