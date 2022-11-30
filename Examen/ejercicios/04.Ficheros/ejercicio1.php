@@ -4,10 +4,10 @@ class Palabra {
     private $rep;
     private $fila = array();
 
-    function __construct($nombre, $rep, $fila) {
+    function __construct($nombre, $fila) {
         $this->nombre = $nombre;
-        $this->rep = $rep;
-        $this->fila = $fila;
+        $this->rep = 1;
+        $this->fila[] = $fila;
     }
 
     public function getNombre() {
@@ -25,22 +25,26 @@ class Palabra {
     public function sumarRep() {
         $this->rep++;
     }
-
     public function getFila() {
         return $this->fila;
     }
     public function setFila($fila) {
-        $this->fila = $fila;
+        array_push($this->fila, $fila);
     }
 
     public function mostrarFilas() {
-        foreach($this->fila as $clave) {
-            echo $clave. '<br>';
-        }
+        //echo count($this->fila).'<br>';
+        if (count($this->fila) == 1) {
+            echo "en la linea ". implode(" y ", $this->fila). '<br>';
+        } else
+            echo "en las lineas ". implode(" y ", $this->fila). '<br>';
     }
 
     function __toString() {
-        return "$this->nombre está repetida $this->rep vez";
+        if ($this->rep == 1) {
+            return "La palabra <u>$this->nombre</u> está repetida $this->rep vez";
+        } else
+            return "La palabra <u>$this->nombre</u> está repetida $this->rep veces";
     }
 }
 
@@ -48,34 +52,31 @@ $ruta = "carpeta_fichero/".$_FILES["fichero"]["name"];
 $ficheroCopiado = move_uploaded_file($_FILES["fichero"]["tmp_name"], $ruta);
 
 if ($ficheroCopiado) {
-
     $fichero = fopen($ruta,"r");
-
-    $contLinea = 0;
     $arrPalabras = array();
+    $contLinea = 0;
 
-    while (!feof($fichero)) {
+    while (!feof($fichero)) {      
         $contLinea++;
-        $linea = fgets($fichero);   // extraigo un string con la 1ª línea
-        $palabras = explode(",", $linea);  // extraigo un array de palabras de la 1ª línea
+        $linea = fgets($fichero);      
+        // un tercer parámetro con valor negativo excluye al último elemento del array
+        $palabras = explode(",", $linea, -1);
 
-        
-        
         foreach ($palabras as $pal) {
-            
-            if (!in_array($pal, $arrPalabras)) {  //comprueba si la palabra ya existe
-                $arrObjetos[] = new Palabra($pal, 1, $contLinea);  //si no existe, crea una nueva palabra y la añade al array de palabras repetidas
-                $arrPalabras[] = $pal;                 
+            if (!in_array($pal, $arrPalabras)) {  
+                $arrObjetos[] = new Palabra($pal, $contLinea);
+                $arrPalabras[] = $pal;  
 
             } else {
                 foreach ($arrObjetos as $objeto) {                    
                     if ($pal === $objeto->getNombre()) {
                         $objeto->sumarRep();
                         $objeto->setFila($contLinea);
+                        break;
                     }                    
                 }
-            }                        
-        }    
+            }
+        }                                     
     }
 }       
 
@@ -83,6 +84,7 @@ fclose($fichero);
 
 foreach($arrObjetos as $objeto) {
     echo $objeto. '<br>';
+    echo $objeto->mostrarFilas(). '<br>';
 } 
 
 

@@ -1,3 +1,4 @@
-casa,turron,albaricoque
-cartera,pino,casa
-almendra, chorizo
+casa,turron,albaricoque,
+cartera,pino,casa,
+almendra,chorizo,pino,
+albaricoque,albaricoque,chorizo,chorizo,
