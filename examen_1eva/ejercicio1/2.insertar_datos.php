@@ -11,10 +11,10 @@ if(!empty($_POST['num']))
 	$_SESSION['indice']=$i; //
 }
 
-//cuando se recibe un 0 se ejecuta el header
+//cuando se recibe un 0 el programa se va a la página de operaciones
 if ($_POST['num'] == 0)
 {
-	header("Location: operaciones.php");
+	header("Location: 3.repetir_serie.php");
 }
 ?>
 
@@ -26,7 +26,7 @@ if ($_POST['num'] == 0)
 <body>
     <!-- Introduciendo un cero rompemos el bucle
     y saltamos al archivo 'operaciones.php' -->
-    <form action="insertar_datos.php" method="POST">
+    <form action="2.insertar_datos.php" method="POST">
         <label for="num"> Introduzca otro número o un cero para cerrar </label>
         <input name="num" type="text" />
         <input type="submit" value="Almacenar" />
