@@ -86,6 +86,3 @@ foreach($arrObjetos as $objeto) {
     echo $objeto. '<br>';
     echo $objeto->mostrarFilas(). '<br>';
 } 
-
-
-
