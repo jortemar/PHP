@@ -21,7 +21,7 @@ function resolverEcuacion($a, $b, $c) {
             $resultado[1] = (-$b - $raiz) / $denominador;  
         }
     // si el denominador es 0 es porque $a es 0. De esta forma se convierte en
-    // una ecuación de primer grado en la que podemos despejar el valor de x        
+    // una ecuación de grado 1 en la que podemos despejar el valor de x        
     } else
         $resultado[0] = -$c / $b;
     
