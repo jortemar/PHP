@@ -1,0 +1,77 @@
+SYMFONY
+
+Symfony es un proyecto PHP de software libre que permite crear aplicaciones y sitios web rápidos y
+seguros de forma profesional. 
+
+- Se publica bajo la licencia MIT de software libre
+- La documentación del proyecto también es libre
+- La fiabilidad de los componentes de Symfony está más que certificada, siendo la tecnología elegida
+para la construcción de muchos proyectos que se podrían considerar gigantescos.
+- Está basado en el modelo MVC (modelo-vista-controlador)
+
+Composer: es un gestor de dependencias que se encarga de gestionar la instalación, actualización y
+eliminación de librerías.
+
+Flex: es un plugin de composer. Composer solo descarga las ficheros, pero flex puede leer el fichero
+de configuración (recipe), y lo implementa, realizando los cambios oportunos: crear ficheros, definir
+variables, cambiar rutas...
+Comando symfony: los proyectos se pueden iniciar con un composer, pero se pueden hacer más fácilmente
+con el comando symfony. También inicializa el servidor web integrado en PHP.
+Tipos de proyecto web: con symfony podemos generar proyectos web completos, o proyectos para microservicios
+o API's. Se pueden inicializar con symfony o composer, pero la propia symfony recomienda el uso de
+su binario para hacerlo.
+
+-Proyecto web:         symfony new nombre_del_proyecto --full
+
+-Microservicios o api's:         symfony new nombre_del_proyecto
+
+Controlador: gestiona las peticiones. Siempre devuelve una respuesta, (objeto response). Puede ser una
+vista o un JSON.
+La capa de negocio no va en el controlador. Va en los servicios. Esta es la discrepancia con el modelo
+clásico de MVC, donde el modelo contiene la mayoría de la capa de negocio. Pero Symfony no tiene modelo.
+Tiene entidades, servicios y repositorios, y entre los tres hacen la función del modelo.
+
+Twig: es un gestor de plantillas para PHP que permite generar archivos de texto de forma más sencilla que
+HTML. El código twig se compila en PHP, más rápido que en HTML, y permite hacer bucles, HTML puro no lo permite.
+También permite bloques o herencias.
+
+Doctrine: es el ORM (Object-Relational Mapping) de Symfony. Interpreta una base de datos como MySQL o SQLServer, 
+traduciéndola a un sistema de clases y objetos (DQL). Las tablas serían las clases (entidades) y los registros 
+los objetos.
+
+Repositorio: contiene los métodos de consultas asociadas a una entidad. Por defecto suele traer cuatro métodos 
+(find($id), findAll, findOneBy, findBy). Luego podemos customizar los que queramos.
+Servicio: son clases utilizadas para aislar y reutilizar una funcionalidad, y que pueden ser invocadas desde
+cualquier lugar de la aplicación. 
+
+Bundle: es el nombre que da Symfony a los paquetes de terceros. Implementan una funcionalidad. Vendría a ser
+como un plug-in.
+
+Comandos: Podemos ejecutar comandos a través del bundle console. Un bundle puede tener sus propios comandos, y
+nosotros también podemos generar comandos, como si fuera una macro para facilitar tareas repetitivas.
+
+Mensajes Flash: es el típico mensaje que salta después de realizar alguna acción. Se usan una vez, y la próxima
+vez que se intenta acceder a ellos ya no funciona, no existe.
+
+Excepciones: cuando la aplicación no es capaz de continuar su flujo de trabajo se lanzará una excepción.
+Cuando esto ocurra, en dev podremos ver mucha información al respecto. En prod también podemos obtener
+información por medio de un twig.
+
+Personalizar excepciones: Es posible modificar los mensajes de error de twig sobreescribiendo las plantillas
+predefinidas. Esto está en   'templates/bundles/TwigBundle/'
+
+Componente validador: Symfony proporciona un componente 'Validator', que permite validar los datos
+ingresados en formularios.
+
+Validaciones personalizadas: Symfony permite crear validaciones personalizadas. Lo haremos con makerBundle,
+que nos provee de un comando para hacernos más sencilal esta tarea. Nos creará los ficheros
+necesarios con     'php bin/console make:validator'
+
+Depuración: Tres elementos para controlar la depuración: toolbar, profiler, y función dump.
+Función dump:
+- En PHP: dump($var)
+- En twig: {{dump var}}  (realiza un echo del contenido)
+-En twig: {%dump var%} (almacena la variable y la añade a la toolbar)
+
+
+

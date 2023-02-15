@@ -73,3 +73,50 @@ Si volvemos a cargar la página debe aparecer
 Ahora hay que generar las funciones en el controlador (src/Controller/TareaController.php)
 Copiamos la función de ejemplo, la nombramos crear(), y en la ruta ponemos
 #[Route('/tarea/crear', name: 'app_crear_tarea')]
+...
+
+MODELO VISTA CONTROLADOR
+- Modelo son las clases
+- Vista es twig (y esto tiene que estar relacionado con los servicios, que es la capa de negocio)
+Las vistas permiten el uso de filtros y funciones. Los filtros servirían para poner estilos html en función de una condición
+- Controlador es donde se realizan las operaciones
+
+-- Entidades, servicios y repositorios son clases (formarían el modelo de la capa MVC)
+
+La entidad es una clase que se equipara a una tabla de base de datos
+Las propiedades de la entidad son los campos de la tabla
+
+El repositorio es una clase que contiene los métodos de consultas asociadas
+a una entidad. Viene con cuatro métodos por defecto
+
+Los servicios son clases tipo para poder ser reutilizadas
+
+
+El controlador también es una clase. Gestiona las peticiones y devuelve una vista o un JSON
+En el controlador van las rutas
+
+
+El atributo 'requirements' en las rutas es para validar por medio de una expresión regular
+@Route(
+    "/editar-tarea/{id},
+    name="app_editar_tarea",
+    requirements={"id"="\d+"}
+)
+
+Esto indica que el atributo que entra en la primera línea (id), debe
+ser un número para ser validado
+
+
+
+-- HERENCIAS -- 
+{% extends 'base.html.twig' %}
+
+Esto es para la sobreescritura de bloques
+{% block stylesheets %}      puede ser stylesheets, title, body, 
+    <link rel="stylesheet" type".....>     esto se sobreescribiría en el archivo base.html.twig, donde debe haber un bloque igual
+{% endblock %}
+
+Para incluir twigs usamos
+{% include 'ruta.html.twig' %}
+
+En los .twig es donde se escribe el html (obviamente entre bloques para poder ser recogidos después)
