@@ -20,8 +20,10 @@ Descargamos bootstrap (versión 4.6)
 En la carpeta public (donde debe estar index.php)
 Creamos la carpeta css y copiamos dentro bootstrap.min.css
 Creamos la carpeta js y copiamos dentro bootstrap.min.js
+
 En la carpeta templates, en el archivo base.html.twig
 metemos en el bloque de stylesheets
+
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 metemos en el bloque de javascripts
 <script src="/js/bootstrap.min.js"></script>
