@@ -1,0 +1,75 @@
+-- CREAR PROYECTO --
+En var/www/html introducimos el comando
+symfony new nombre_proyecto --full
+(--full está deprecado, usar --webapp)
+
+Nos movemos a la carpeta del nombre_proyecto
+composer require symfony/maker-bundle --dev
+composer require doctrine/annotations
+
+-- INICIAR SERVIDOR WEB -- 
+En la carpeta del proyecto
+symfony server:start
+
+-- CREAR UN CONTROLADOR --
+php bin/console make:controller
+Después de ejecutarlo pedirá un nombre para el controlador (TareaController en el proyecto del curso)
+
+-- AÑADIR RECURSOS EXTERNOS --
+Descargamos bootstrap (versión 4.6)
+En la carpeta public (donde debe estar index.php)
+Creamos la carpeta css y copiamos dentro bootstrap.min.css
+Creamos la carpeta js y copiamos dentro bootstrap.min.js
+En la carpeta templates, en el archivo base.html.twig
+metemos en el bloque de stylesheets
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+metemos en el bloque de javascripts
+<script src="/js/bootstrap.min.js"></script>
+también hay que meter los enlaces de popper y jquery (en versión 4.6)
+Si está bien hecho, se podrá apreciar como la página del controlador que hemos hecho
+anteriormente sufre un leve cambio de estilo
+
+-- CREAR BASE DE DATOS --
+Duplicamos el fichero .env (la copia se llamará '.env.local')
+Borramos todo y dejamos lo que nos interesa
+###> doctrine/doctrine-bundle ###
+DATABASE_URL="mysql://admin:1234@1237.0.0.1:3006/curso_principiante?serverVersion=MariaDb-10.5.12"
+###< doctrine/doctrine-bundle ###
+
+guardamos y abrimos una terminal
+php bin/console doctrine:database:create
+
+-- CREAR ENTIDAD Y REPOSITORIO --
+abrimos terminal 
+php bin/console make:entity
+La nombramos como queramos (en el ejemplo 'Tarea')
+Nos pregunta que campos queremos que tenga, y después de qué tipo, qué tamaño, y si es obligatorio
+Ponemos los que consideremos necesarios
+
+La respuesta nos ofrece ya un comando de migración de base de datos. Lo ejecutamos
+php bin/console make:migration
+Vemos que se ha generado la carpeta migrations con un archivo (aparte del .gitignore)
+php bin/console doctrine:migrations:migrate
+
+Si entramos a localhost/phpmyadmin podemos comprobar que se ha creado correctamente
+la base de datos y la tabla
+
+-- CREACIÓN DEL MENÚ --
+Dentro de la carpeta 'templates' creamos otra carpeta 'comunes'. Cogemos el archivo de la 
+entidad que tenemos justo debajo (en el curso 'tarea'. Cogemos el index.html.twig) 
+y lo pegamos en 'comunes'. Borramos su contenido y lo renombramos a _menu.html.twig´
+
+Después nos vamos al archivo base.html.twig, y dentro de la etiqueta body
+incluimos el archivo menu que acabamos de crear
+
+{% include 'comunes/_menu.html.twig' %}
+<div class="container">
+{% block body $}{% endblock %}   (esta línea ya está en el archivo)
+</div>
+
+Volvemos al archivo _menu.html.twig y le metemos un menu de bootstrap
+Si volvemos a cargar la página debe aparecer
+
+Ahora hay que generar las funciones en el controlador (src/Controller/TareaController.php)
+Copiamos la función de ejemplo, la nombramos crear(), y en la ruta ponemos
+#[Route('/tarea/crear', name: 'app_crear_tarea')]
